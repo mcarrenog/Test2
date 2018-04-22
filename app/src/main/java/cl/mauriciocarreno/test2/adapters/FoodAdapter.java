@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
 import java.util.List;
+
 import cl.mauriciocarreno.test2.R;
 import cl.mauriciocarreno.test2.data.Queries;
 import cl.mauriciocarreno.test2.models.Food;
@@ -19,7 +21,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     private List<Food> foods = new Queries().foods();
     private FoodClickListener listener;
-    public  FoodAdapter (FoodClickListener listener){this.listener = listener;}
+
+    public FoodAdapter(FoodClickListener listener) {
+        this.listener = listener;
+    }
 
 
     @Override
@@ -33,23 +38,22 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         final Food food = foods.get(position);
 
 
-        Log.d("CTM",food.getName() + " " + food.getCategory() + " " + food.getQuantity());
+        Log.d("CTM", food.getName() + " " + food.getCategory() + " " + food.getQuantity());
 
         holder.nameFoodTv.setText(food.getName());
         holder.categoryFoodTv.setText(food.getCategory());
-        holder.quantityFoodTv.setText(food.getQuantity());
+        holder.quantityFoodTv.setText(String.valueOf(food.getQuantity()));
         holder.foodCb.setChecked(food.isState());
 
         holder.foodCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b)
-                {
+                if (b) {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             int auxPosition = holder.getAdapterPosition();
-                            Food auxFood =  foods.get(auxPosition);
+                            Food auxFood = foods.get(auxPosition);
                             auxFood.setState(true);
                             auxFood.save();
 
@@ -81,8 +85,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-     static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         private CheckBox foodCb;
         private TextView nameFoodTv;
         private TextView categoryFoodTv;
