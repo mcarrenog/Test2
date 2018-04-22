@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:paddingBottom="8dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="24dp">
+
+    <CheckBox
+        android:id="@+id/foodListCb"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+
+        android:id="@+id/foodNameListTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/foodListCb"
+        tool:text="Name" />
+
+    <TextView
+        android:id="@+id/foodCategoryListTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foodNameListTv"
+        android:layout_toRightOf="@id/foodListCb"
+        tool:text="Category" />
+
+    <TextView
+        android:id="@+id/foodQuantityTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foodNameListTv"
+        android:layout_toRightOf="@id/foodCategoryListTv"
+        tool:text="Quantity" />
+
+</RelativeLayout>
