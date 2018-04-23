@@ -2,7 +2,6 @@ package cl.mauriciocarreno.test2.adapters;
 
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +35,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Food food = foods.get(position);
-
-
-        Log.d("CTM", food.getName() + " " + food.getCategory() + " " + food.getQuantity());
 
         holder.nameFoodTv.setText(food.getName());
         holder.categoryFoodTv.setText(food.getCategory());
@@ -82,6 +78,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     public void update(Food food) {
         foods.add(food);
+        notifyDataSetChanged();
+    }
+
+    public void refresh()
+    {
+        foods.clear();
+        foods = new Queries().foods();
         notifyDataSetChanged();
     }
 

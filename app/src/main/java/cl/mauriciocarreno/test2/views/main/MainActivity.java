@@ -3,20 +3,17 @@ package cl.mauriciocarreno.test2.views.main;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.sdsmdg.tastytoast.TastyToast;
 
@@ -24,10 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cl.mauriciocarreno.test2.R;
-import cl.mauriciocarreno.test2.data.Queries;
 import cl.mauriciocarreno.test2.models.Food;
 
 public class MainActivity extends AppCompatActivity {
+
     private FoodsFragment foodsFragment;
 
     @Override
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        foodsFragment = (FoodsFragment) getSupportFragmentManager().findFragmentById(R.id.foodsFragment);
+        foodsFragment = (FoodsFragment) getSupportFragmentManager().findFragmentById(R.id.foodFragment);
 
         final List<String> category = new ArrayList<>();
         category.add("Seleccione una opción");
@@ -81,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
                             food.setState(false);
                             food.save();
 
-                            Log.d("Food", food.getName() + " " + food.getCategory() + " " + food.getQuantity() + " " + food.isState());
-
                             foodsFragment.updateList(food);
 
                             dialog.dismiss();
+
+                            TastyToast.makeText(MainActivity.this, "Se ha agregado correctamente a la lista", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         }
 
                     }
@@ -96,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        foodsFragment.refreshList();
     }
 
     @Override

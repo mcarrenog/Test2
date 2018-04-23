@@ -15,28 +15,31 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-
         android:id="@+id/foodNameListTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/foodListCb"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
         tool:text="Name" />
 
     <TextView
         android:id="@+id/foodCategoryListTv"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/foodNameListTv"
         android:layout_toRightOf="@id/foodListCb"
+        android:textSize="14sp"
         tool:text="Category" />
 
     <TextView
         android:id="@+id/foodQuantityTv"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/foodNameListTv"
-        android:layout_toRightOf="@id/foodCategoryListTv"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
         tool:text="Quantity" />
 
 </RelativeLayout>

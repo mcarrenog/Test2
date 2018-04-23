@@ -1,21 +1,20 @@
 package cl.mauriciocarreno.test2.views.main;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cl.mauriciocarreno.test2.views.details.DetailsActivity;
 import cl.mauriciocarreno.test2.R;
 import cl.mauriciocarreno.test2.adapters.FoodAdapter;
 import cl.mauriciocarreno.test2.adapters.FoodClickListener;
 import cl.mauriciocarreno.test2.models.Food;
+import cl.mauriciocarreno.test2.views.details.DetailsActivity;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -23,6 +22,7 @@ import cl.mauriciocarreno.test2.models.Food;
 public class FoodsFragment extends Fragment implements FoodClickListener {
 
     private FoodAdapter adapter;
+
     public static final String FOOD_ID = "cl.mauriciocarreno.test2.views.main.KEY.FOOD_ID";
 
     public FoodsFragment() {
@@ -49,8 +49,12 @@ public class FoodsFragment extends Fragment implements FoodClickListener {
     }
 
     public void updateList(Food food) {
-        Log.d("FoodList", food.getName());
         adapter.update(food);
+    }
+
+    public void refreshList()
+    {
+        adapter.refresh();
     }
 
     @Override
