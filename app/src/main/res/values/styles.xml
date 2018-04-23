@@ -19,7 +19,10 @@
 
     <style name="AccentButton" parent="AppTheme">
         <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
     </style>
+
+
 
     <style name="SpinnerCustomStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@android:color/white</item>
